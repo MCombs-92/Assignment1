@@ -1,0 +1,24 @@
+﻿@model Application1.ViewModels.VehiclesforOwner
+@{
+    ViewBag.Title = "ShowVehicles";
+}
+
+<h2>Vehicles by owner</h2>
+
+<table class="table">
+    <tr><th>Owner</th></tr>
+    <tr>
+        <td>@Model.Owner.Name</td>
+    </tr>
+
+    <tr><th>Year</th><th>Make</th><th>Model</th><th>Vin Number</th></tr>
+    @foreach(var vehicle in Model.Vehicles) {
+    <tr>
+        <td>@vehicle.Year</td>
+        <td>@vehicle.Make</td>
+        <td>@vehicle.Model</td>
+        <td>@vehicle.Vin</td>
+    </tr>
+    }
+</table>
+

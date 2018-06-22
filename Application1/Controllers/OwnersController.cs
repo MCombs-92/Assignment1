@@ -7,12 +7,26 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Application1.Models;
+using Application1.ViewModels;
 
 namespace Application1.Controllers
 {
     public class OwnersController : Controller
     {
         private Application1Context db = new Application1Context();
+
+        public ActionResult ShowVehicles(int id) {
+            VehiclesforOwner VH = new VehiclesforOwner();
+            VH.Owner = db.Owners.Find(id);
+            var Vehicles = new List<Vehicle>();
+            var vehicle = db.Vehicles.Where(i => i.OwnerId == id).ToArray();
+            foreach( var veh in vehicle) {
+                Vehicles.Add(veh);
+            }
+
+            VH.Vehicles = Vehicles;
+            return View(VH);
+        }
 
         // GET: Owners
         public ActionResult Index()
