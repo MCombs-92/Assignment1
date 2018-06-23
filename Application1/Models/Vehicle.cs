@@ -24,6 +24,8 @@ namespace Application1.Models {
         [StringLength(30)]
         public string Model { get; set; }
 
+        // GD: Actually Year should be an integer
+        // Vehicle: Id (int), Vin (string), Make (string), Model (string), *Year (int)*
         [Required]
         [StringLength(4)]
         public string Year { get; set; }
